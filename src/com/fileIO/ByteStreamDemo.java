@@ -1,12 +1,13 @@
 package com.fileIO;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 /*
  * File is a class 
- * Byte Stream
+ * Byte Stream : 1 byte/char
  * FileOutputStream 
  * to write into the file
  * FileInputStream
@@ -22,7 +23,7 @@ public class ByteStreamDemo {
 public static void main(String[] args) throws Exception {
 	//to create and open file
 	FileOutputStream fos=new FileOutputStream("file1.txt",true);
-	String msg="plaease contact admin";
+	String msg="\nplaease contact admin";
 	//to write into the file
 	byte[] b1=msg.getBytes();
 	fos.write(b1);
@@ -31,6 +32,13 @@ public static void main(String[] args) throws Exception {
 	//to close file
 	fos.close();
 	System.out.println("data written...");
+	
+	FileInputStream fis =new FileInputStream("file1.txt");
+	
+	int x;
+	while ((x=fis.read())!=-1) {
+		System.out.print((char)x);
+	}
 	
 }
 }
